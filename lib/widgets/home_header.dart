@@ -32,7 +32,7 @@ class HomeHeader extends StatelessWidget {
           ),
           Spacer(),
           Icon(
-            Icons.notifications,
+            Icons.notifications_outlined,
             color: Colors.grey,
             size: 25,
           ),
@@ -40,7 +40,7 @@ class HomeHeader extends StatelessWidget {
             width: 5,
           ),
           Icon(
-            Icons.border_all,
+            Icons.grid_view_outlined,
             color: Colors.grey,
             size: 25,
           ),
