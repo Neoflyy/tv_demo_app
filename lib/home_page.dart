@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tv_app_demo/app_scaffold.dart';
 import 'package:tv_app_demo/broadcast_page.dart';
 import 'package:tv_app_demo/ui_kit/app_images.dart';
+import 'package:tv_app_demo/widgets/home_header.dart';
 
 const List<ChannelModel> _list = [
   ChannelModel(
@@ -35,21 +36,27 @@ class HomePage extends StatelessWidget {
     return AppScaffold(
       padding: const EdgeInsets.all(20),
       color: const Color(0xff0f0f0f),
-      child: SizedBox(
-        height: 170,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          itemCount: _list.length,
-          itemBuilder: (context, index) {
-            final ChannelModel item = _list[index];
-            return _ListItem(
-              image: item.image,
-              title: item.title,
-            );
-          },
-        ),
+      hasNavBar: true,
+      child: Column(
+        children: [
+          const HomeHeader(),
+          SizedBox(
+            height: 170,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              itemCount: _list.length,
+              itemBuilder: (context, index) {
+                final ChannelModel item = _list[index];
+                return _ListItem(
+                  image: item.image,
+                  title: item.title,
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

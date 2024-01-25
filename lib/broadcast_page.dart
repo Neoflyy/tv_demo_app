@@ -6,9 +6,9 @@ class BroadcastPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      padding: const EdgeInsets.all(20),
-      color: const Color(0xff0f0f0f),
+    return const AppScaffold(
+      padding: EdgeInsets.all(20),
+      color: Color(0xff0f0f0f),
       child: Column(children: [
         Text(
           'Whatever',
