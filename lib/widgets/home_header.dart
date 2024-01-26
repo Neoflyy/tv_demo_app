@@ -6,18 +6,18 @@ class HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(10),
+    return Padding(
+      padding: const EdgeInsets.all(10),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             radius: 25,
             backgroundImage: AssetImage(AppImages.randomDude),
           ),
-          SizedBox(
+          const SizedBox(
             width: 7,
           ),
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -30,20 +30,31 @@ class HomeHeader extends StatelessWidget {
               ),
             ],
           ),
-          Spacer(),
-          Icon(
-            Icons.notifications_outlined,
-            color: Colors.grey,
-            size: 25,
+          const Spacer(),
+          InkWell(
+            customBorder: const CircleBorder(),
+            splashColor: const Color.fromARGB(131, 158, 158, 158),
+            onTap: () {},
+            child: const Padding(
+              padding: EdgeInsets.all(1),
+              child: Icon(
+                Icons.notifications_outlined,
+                color: Colors.grey,
+              ),
+            ),
           ),
-          SizedBox(
-            width: 5,
-          ),
-          Icon(
-            Icons.grid_view_outlined,
-            color: Colors.grey,
-            size: 25,
-          ),
+          InkWell(
+            customBorder: const CircleBorder(),
+            splashColor: const Color.fromARGB(131, 158, 158, 158),
+            onTap: () {},
+            child: const Padding(
+              padding: EdgeInsets.all(1),
+              child: Icon(
+                Icons.grid_view_outlined,
+                color: Colors.grey,
+              ),
+            ),
+          )
         ],
       ),
     );
