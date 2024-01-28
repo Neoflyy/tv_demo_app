@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppScaffold extends StatefulWidget {
-  AppScaffold({
+  const AppScaffold({
     super.key,
     required this.color,
     required this.child,

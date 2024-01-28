@@ -4,7 +4,8 @@ import 'package:tv_app_demo/pages/home_page/channel_model.dart';
 import 'package:tv_app_demo/widgets/channels_list.dart';
 
 class BroadcastPage extends StatelessWidget {
-  const BroadcastPage({super.key, required this.image, required this.list, required this.id});
+  const BroadcastPage(
+      {super.key, required this.image, required this.list, required this.id});
 
   final String image;
   final int id;
@@ -21,29 +22,33 @@ class BroadcastPage extends StatelessWidget {
           fit: BoxFit.cover,
           width: double.infinity,
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Lorem',
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
-              const Text(
+              Text(
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-                style: TextStyle(fontSize: 10, color: Color.fromARGB(150, 158, 158, 158)),
+                style: TextStyle(
+                    fontSize: 10, color: Color.fromARGB(150, 158, 158, 158)),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 50,
               ),
-              ChannelsList(
-                list: list.where((element) => element.id != id).toList(),
-              )
+              Text(
+                'Related Channels',
+              ),
             ],
           ),
+        ),
+        ChannelsList(
+          list: list.where((element) => element.id != id).toList(),
         )
       ]),
     );
