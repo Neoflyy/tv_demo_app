@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:tv_app_demo/pages/home_page/channel_model.dart';
-import 'package:tv_app_demo/widgets/list_item.dart';
 
-class ChannelsList extends StatelessWidget {
-  const ChannelsList({super.key, required this.list});
+class ChannelsListView extends StatelessWidget {
+  const ChannelsListView({super.key, required this.items, required this.itemBuilder});
 
-  final List<ChannelModel> list;
-
+  final List<ChannelModel> items;
+  final Widget? Function(BuildContext, int) itemBuilder;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 170,
+      height: 150,
       child: ListView.builder(
+        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.zero,
-        shrinkWrap: true,
-        itemCount: list.length,
-        itemBuilder: (context, index) {
-          final ChannelModel item = list[index];
-          return ListItem(
-            image: item.image,
-            title: item.title,
-            list: list,
-            id: index + 1,
-          );
-        },
+        itemCount: items.length,
+        itemBuilder: itemBuilder,
       ),
     );
   }

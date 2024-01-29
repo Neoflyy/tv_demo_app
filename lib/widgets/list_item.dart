@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tv_app_demo/pages/broadcast_page.dart';
-import 'package:tv_app_demo/pages/home_page/channel_model.dart';
 
 class ListItem extends StatelessWidget {
-  const ListItem({super.key, required this.image, required this.title, required this.list, required this.id});
+  const ListItem({super.key, required this.image, required this.title, required this.id});
 
   final String image;
   final String title;
   final int id;
-
-  final List<ChannelModel> list;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +19,7 @@ class ListItem extends StatelessWidget {
           GestureDetector(
               onTap: () {
                 Feedback.forTap(context);
-                Navigator.of(context).push(CupertinoPageRoute(builder: (BuildContext context) {
-                  return BroadcastPage(
-                    list: list,
-                    image: image,
-                    id: id,
-                  );
-                }));
+                _navigateToDetails(context);
               },
               child: Image.asset(image)),
           Text(
@@ -38,5 +29,16 @@ class ListItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _navigateToDetails(context) {
+    Navigator.of(context).pushAndRemoveUntil(CupertinoPageRoute(builder: (
+      BuildContext context,
+    ) {
+      return BroadcastPage(
+        image: image,
+        id: id,
+      );
+    }), ModalRoute.withName('/'));
   }
 }

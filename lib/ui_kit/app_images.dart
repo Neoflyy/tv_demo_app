@@ -9,4 +9,5 @@ class AppImages {
   static const String tvPireli = 'assets/images/tv_pirveli.png';
   static const String silkUniversal = 'assets/images/silk_universal.jpg';
   static const String randomDude = 'assets/images/randomdude.jpg';
+  static const String linus = 'assets/images/linus.jpg';
 }
