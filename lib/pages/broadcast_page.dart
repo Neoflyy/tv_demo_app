@@ -16,46 +16,74 @@ class BroadcastPage extends StatelessWidget {
     return AppScaffold(
       padding: const EdgeInsets.all(20),
       color: const Color(0xff0f0f0f),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Image.asset(
-          image,
-          fit: BoxFit.cover,
-          width: double.infinity,
-        ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Lorem',
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-                style: TextStyle(fontSize: 10, color: Color.fromARGB(150, 158, 158, 158)),
-              ),
-              SizedBox(height: 50),
-              Text(
-                'Related Channels',
-              ),
-            ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(
+            image,
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
-        ),
-        ChannelsListView(
-          items: list,
-          itemBuilder: (context, index) {
-            final ChannelModel item = list[index];
-            return id == item.id
-                ? Container()
-                : ListItem(
-                    image: item.image,
-                    title: item.title,
-                    id: item.id,
-                  );
-          },
-        )
-      ]),
+          const _Info(),
+          _ListView(id: id)
+        ],
+      ),
+    );
+  }
+}
+
+class _Info extends StatelessWidget {
+  const _Info();
+
+  @override
+  Widget build(BuildContext context) {
+    const String title = 'Lorem';
+    const String listTitle = 'Related Channels';
+    const String content =
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title),
+          SizedBox(height: 10),
+          Text(
+            content,
+            style: TextStyle(fontSize: 10, color: Color.fromARGB(150, 158, 158, 158)),
+          ),
+          SizedBox(height: 50),
+          Text(
+            listTitle,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ListView extends StatelessWidget {
+  const _ListView({
+    required this.id,
+  });
+
+  final int id;
+
+  @override
+  Widget build(BuildContext context) {
+    return ChannelsListView(
+      items: list,
+      itemBuilder: (context, index) {
+        final ChannelModel item = list[index];
+
+        return id == item.id
+            ? Container()
+            : ListItem(
+                image: item.image,
+                title: item.title,
+                id: item.id,
+              );
+      },
     );
   }
 }
