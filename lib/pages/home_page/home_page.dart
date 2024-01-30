@@ -14,33 +14,43 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      padding: const EdgeInsets.all(20),
-      color: const Color(0xff0f0f0f),
+    const String listTitle = 'General Channels';
+
+    return const AppScaffold(
+      padding: EdgeInsets.all(20),
+      color: Color(0xff0f0f0f),
       hasNavBar: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const HomeHeader(),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 9),
-            child: Text(
-              'General Channels',
-            ),
+          HomeHeader(),
+          Padding(
+            padding: EdgeInsets.only(left: 16),
+            child: Text(listTitle),
           ),
-          ChannelsListView(
-            itemBuilder: (context, index) {
-              final ChannelModel item = list[index];
-              return ListItem(
-                image: item.image,
-                title: item.title,
-                id: item.id,
-              );
-            },
-            items: list,
-          ),
+          _ListView(),
         ],
       ),
+    );
+  }
+}
+
+class _ListView extends StatelessWidget {
+  const _ListView();
+
+  @override
+  Widget build(BuildContext context) {
+    return ChannelsListView(
+      itemBuilder: (context, index) {
+        final ChannelModel item = list[index];
+
+        return ListItem(
+          id: item.id,
+          title: item.title,
+          image: item.image,
+        );
+      },
+      items: list,
     );
   }
 }
